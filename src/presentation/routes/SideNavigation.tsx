@@ -11,6 +11,7 @@ import {
 import { View, useWindowDimensions } from "react-native";
 import { StackNavigator } from "./StackNavigator";
 import { BottomTabNavigator } from "./BottonTabNavigator";
+import { Ionicon } from "../components/shared/IonIcon";
 
 const Drawer = createDrawerNavigator();
 
@@ -34,8 +35,8 @@ export const SideNavigation = () => {
           },
         }}
       >
-        <Drawer.Screen name="Tabs" component={BottomTabNavigator} />
-        <Drawer.Screen name="Profile" component={ProfileScreen} />
+        <Drawer.Screen  options={{drawerIcon: ({color})=><Ionicon name="bed-outline" color={color} />}}  name="Tabs" component={BottomTabNavigator} />
+        <Drawer.Screen options={{drawerIcon: ({color})=><Ionicon name="bag-add-outline" color={color} />}} name="Profile" component={ProfileScreen} />
       </Drawer.Navigator>
     
   );

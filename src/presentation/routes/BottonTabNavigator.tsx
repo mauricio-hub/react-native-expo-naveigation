@@ -1,10 +1,11 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Tab1Screen } from "../screen/tabs/Tab1Screen";
-import { Tab2Screen } from "../screen/tabs/Tab2Screen";
-import { Tab3Screen } from "../screen/tabs/Tab3Screen";
 import { globalColors } from "../theme/theme";
 import { Text } from "react-native";
+import { TopTabNavigator } from "./TopTabNaivgator";
+import { StackNavigator } from "./StackNavigator";
+import { Ionicon } from "../components/shared/IonIcon";
 
 const Tab = createBottomTabNavigator();
 
@@ -15,6 +16,7 @@ export const BottomTabNavigator = () => {
         backgroundColor: globalColors.background,
       }}
       screenOptions={{
+        tabBarActiveTintColor: globalColors.primary,
         tabBarLabelStyle: {
           marginBottom: 5,
         },
@@ -31,21 +33,34 @@ export const BottomTabNavigator = () => {
     >
       <Tab.Screen
         name="Tab1"
-        options={{ title: "Tab1",tabBarIcon: ({color})=>(<Text style={{color}}>Tab1</Text>) }}
+        options={{
+          title: "Tab1",
+          tabBarIcon: ({ color }) => (
+            <Ionicon name="menu-outline" color={color} />
+          ),
+        }}
         component={Tab1Screen}
-
       />
+
       <Tab.Screen
         name="Tab2"
-        options={{ title: "Tab2",tabBarIcon: ({color})=>(<Text style={{color}}>Tab2</Text>) }}
-        component={Tab2Screen}
-
+        options={{
+          title: "Tab2",
+          tabBarIcon: ({ color }) => (
+            <Ionicon name="accessibility-outline" color={color} />
+          ),
+        }}
+        component={TopTabNavigator}
       />
       <Tab.Screen
         name="Tab3"
-        options={{ title: "Tab3",tabBarIcon: ({color})=>(<Text style={{color}}>Tab3</Text>) }}
-        component={Tab3Screen}
-
+        options={{
+          title: "Tab3",
+          tabBarIcon: ({ color }) => (
+            <Ionicon name="bar-chart-outline" color={color} />
+          ),
+        }}
+        component={StackNavigator}
       />
     </Tab.Navigator>
   );
